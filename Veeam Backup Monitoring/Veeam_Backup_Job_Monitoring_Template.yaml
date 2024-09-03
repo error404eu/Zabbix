@@ -1,0 +1,28 @@
+zabbix_export:
+  version: '7.0'
+  template_groups:
+    - uuid: caa9c30dd875482094dd45ae872fa87c
+      name: CustomTemplates
+  templates:
+    - uuid: 70cfb947d7b64b34b8089700457c696b
+      template: 'Veeam Backup Job Monitoring'
+      name: 'Veeam Backup Job Monitoring'
+      vendor:
+        name: Pelimar
+        version: 0.1
+      groups:
+        - name: CustomTemplates
+      items:
+        - uuid: ce61e32518ec43989c693555bcff18f0
+          name: 'Veeam Backup Log'
+          type: ZABBIX_ACTIVE
+          key: 'eventlog[Veeam Backup,,Error,Veeam MP,190,,skip]'
+          value_type: LOG
+          trends: '0'
+          triggers:
+            - uuid: 4f02622d81014658824e6cee859f1766
+              expression: 'logeventid(/Veeam Backup Job Monitoring/eventlog[Veeam Backup,,Error,Veeam MP,190,,skip],,"190")=1'
+              name: 'Veeam Backup Job {ITEM.VALUE1} Failed'
+              priority: HIGH
+              type: MULTIPLE
+              manual_close: 'YES'
