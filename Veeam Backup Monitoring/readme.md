@@ -6,3 +6,6 @@ This template is designed to monitor all backup jobs managed by the Veeam servic
 
 - No API integration or additional configuration required.
 - Simply attach the template to a host with Veeam configured to start monitoring immediately.
+
+## Notes
+This template was tested with Zabbix 7.0.3
