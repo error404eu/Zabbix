@@ -1,2 +1,2 @@
 # Zabbix
-Collection of custom Zabbix template
+Collection of custom Zabbix templates
